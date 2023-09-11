@@ -1,0 +1,31 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.card{
+    width: 40%;
+    margin: 150px auto;
+    padding: 3%;
+    background-color: rgb(187, 163, 209);
+    border-radius: 30px;
+}
+
+.card h3, p{
+    text-align: center;
+    margin-top: 8px;
+}
+
+.btn-container{
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 20%;
+}
+.card button{
+width: 30px;
+height: 30px;
+border-radius: 50%;
+border: none;
+}

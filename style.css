@@ -1,31 +1,66 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.card{
-    width: 40%;
-    margin: 150px auto;
-    padding: 3%;
-    background-color: rgb(187, 163, 209);
-    border-radius: 30px;
+body {
+  background-color: rgba(254, 250, 179, 0.534);
 }
 
-.card h3, p{
-    text-align: center;
-    margin-top: 8px;
+.card {
+  width: 30%;
+  min-height: 250px;
+  border-radius: 30px;
+  display: flex;
+  margin: 150px auto;
+  background-color: rgb(187, 163, 209);
 }
 
-.btn-container{
-    margin-top: 10px;
-    display: flex;
-    justify-content: center;
-    gap: 20%;
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+  gap: 15px;
 }
-.card button{
-width: 30px;
-height: 30px;
-border-radius: 50%;
-border: none;
+
+.name, .email, .website {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 18px;
+}
+
+input {
+  height: 30px;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 15px;
+}
+
+.card img {
+  width: 15px;
+  height: 15px;
+}
+
+.card h3, p {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  margin-top: 8px;
+}
+
+.btn-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  gap: 20%;
+}
+
+.card button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: none;
 }

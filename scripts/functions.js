@@ -7,7 +7,7 @@ export async function renderCard(link) {
   goDown();
   goUp();
 }
-
+let key
 let newValue;
 
 function render(data) {
@@ -35,11 +35,11 @@ function render(data) {
   const editBtns = document.querySelectorAll(".edit-btn");
   editBtns.forEach((editBtn) =>
     editBtn.addEventListener("click", (e) => {
-      const div = e.target.getAttribute("name");
-      const division = document.querySelector(`.${div}`);
-      division.innerHTML = `<input class='input-${div}' placeholder="new data">
-                                <button name=${div} class='ok-btn'>OK</button>`;
-      const input = document.querySelector(`.input-${div}`);
+      key = e.target.getAttribute("name");
+      const division = document.querySelector(`.${key}`);
+      division.innerHTML = `<input class='input-${key}' placeholder="new data">
+                                <button name=${key} class='ok-btn'>OK</button>`;
+      const input = document.querySelector(`.input-${key}`);
       const okBtns = document.querySelectorAll(".ok-btn");
       okBtns.forEach((okBtn) =>
         okBtn.addEventListener("click", (e) => {
@@ -47,24 +47,14 @@ function render(data) {
           if (newValue === "") {
             message.innerText = "поле не может быть пустым";
             message.style.color = "brown";
-          } else if (div === "name") {
-            console.log(div, newValue);
-            editName(url + data.id);
+          } else 
+            console.log(key, newValue);
+            editData(url + data.id);
             message.innerText = "Данные отредактированны";
             message.style.color = "green";
-          } else if (div === "email") {
-            console.log(div, newValue);
-            editEmail(url + data.id);
-            message.innerText = "Данные отредактированны";
-            message.style.color = "green";
-          } else if (div === "website") {
-            console.log(div, newValue);
-            editWebsite(url + data.id);
-            message.innerText = "Данные отредактированны";
-            message.style.color = "green";
-          }
         })
       )
+      return key
     })
   )
 }
@@ -91,41 +81,11 @@ function goDown() {
   );
 }
 
-async function editName(link) {
+async function editData(link) {
   const response = await fetch(link, {
     method: "PATCH",
     body: JSON.stringify({
-      name: `${newValue}`,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-  const data = await response.json();
-  console.log(data);
-  renderCard(url + data.id);
-}
-
-async function editEmail(link) {
-  const response = await fetch(link, {
-    method: "PATCH",
-    body: JSON.stringify({
-      email: `${newValue}`,
-    }),
-    headers: {
-      "Content-type": "application/json; charset=UTF-8",
-    },
-  });
-  const data = await response.json();
-  console.log(data);
-  renderCard(url + data.id);
-}
-
-async function editWebsite(link) {
-  const response = await fetch(link, {
-    method: "PATCH",
-    body: JSON.stringify({
-      website: `${newValue}`,
+      [key]: `${newValue}`,
     }),
     headers: {
       "Content-type": "application/json; charset=UTF-8",
